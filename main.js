@@ -80,3 +80,25 @@ const destinationCoordinates = promptForCoordinates();
 console.log("Destination Coordinates:", destinationCoordinates);
 
 const navigationMethod = promptForNavigationMethod();
+
+let navigator;
+switch (navigationMethod) {
+    case 'walk':
+        navigator = new WalkingNavigator(currentCoordinates);
+        break;
+    case 'car':
+        navigator = new CarNavigator(currentCoordinates);
+        break;
+    case 'bike':
+        navigator = new BicycleNavigator(currentCoordinates);
+        break;
+    default:
+        console.log("Invalid navigation method. Please choose 'walk', 'car', or 'bike'.");
+        break;
+}
+
+if (navigator) {
+    navigator.setDestinationCoordinates(destinationCoordinates);
+    navigator.destinationTime();
+    navigator.go();
+}
