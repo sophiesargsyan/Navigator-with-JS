@@ -41,6 +41,23 @@ class Navigator {
         return Math.floor(Math.random() * (500 - 100 + 1) + 100);
     }
 }
+class WalkingNavigator extends Navigator {
+    constructor(currentCoordinates) {
+        super({ speed: 5 }, currentCoordinates);
+    }
+}
+  
+class CarNavigator extends Navigator {
+    constructor(currentCoordinates) {
+        super({ speed: 60 }, currentCoordinates);
+    }
+}
+  
+class BicycleNavigator extends Navigator {
+    constructor(currentCoordinates) {
+        super({ speed: 20 }, currentCoordinates);
+    }
+}
 
 function promptForCoordinates() {
     const latitude = parseFloat(prompt("Enter latitude:"));
