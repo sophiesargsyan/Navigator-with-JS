@@ -20,6 +20,26 @@ class Navigator {
             }
         }, 2000);
     }
+
+    destinationTime() {
+        if (!this.destinationCoordinates) {
+            console.log('Please set destination coordinates first.');
+            return;
+        }
+    
+        const distance = this.calcDestination();
+        const time = distance / this.type.speed;
+        console.log(`Estimated travel time: ${time.toFixed(2)} hours`);
+    }
+  
+    setDestinationCoordinates(destinationCoordinates) {
+        this.destinationCoordinates = destinationCoordinates;
+        this.distance = this.calcDestination();
+    }
+  
+    calcDestination() {
+        return Math.floor(Math.random() * (500 - 100 + 1) + 100);
+    }
 }
 
 function promptForCoordinates() {
