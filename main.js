@@ -1,4 +1,27 @@
 'use strict';
+class Navigator {
+    constructor(type, currentCoordinates) {
+        this.type = type;
+        this.currentCoordinates = currentCoordinates;
+        this.destinationCoordinates = null;
+        this.distance = null;
+    }
+  
+    go() {
+        const directions = ['right', 'left', 'straight'];
+        const interval = setInterval(() => {
+            if (this.distance > 0) {
+                const direction = directions[Math.floor(Math.random() * directions.length)];
+                console.log(`Move ${direction}`);
+                this.distance -= 10 * this.type.speed;
+            } else {
+                clearInterval(interval);
+                console.log('You have arrived');
+            }
+        }, 2000);
+    }
+}
+
 function promptForCoordinates() {
     const latitude = parseFloat(prompt("Enter latitude:"));
     const longitude = parseFloat(prompt("Enter longitude:"));
