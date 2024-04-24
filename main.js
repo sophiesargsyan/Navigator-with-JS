@@ -59,8 +59,30 @@ class BicycleNavigator extends Navigator {
     }
 }
 
+function getRandomCoordinates() {
+    const latitude = Math.random() * (90 - (-90)) + (-90);
+    const longitude = Math.random() * (180 - (-180)) + (-180);
+    return { latitude, longitude };
+}
+
+function getRandomDestinationCoordinates() {
+    const latitude = Math.random() * (90 - (-90)) + (-90);
+    const longitude = Math.random() * (180 - (-180)) + (-180);
+    return { latitude, longitude };
+}
+
+const currentCoordinates = getRandomCoordinates();
+console.log("Current Coordinates:", currentCoordinates);
+
+const destinationCoordinates = getRandomDestinationCoordinates();
+console.log("Destination Coordinates:", destinationCoordinates);
+
+const navigationMethods = ['walk', 'car', 'bike'];
+const randomNavigationMethod = navigationMethods[Math.floor(Math.random() * navigationMethods.length)];
+console.log("Selected Navigation Method:", randomNavigationMethod);
+
 let navigator;
-switch (navigationMethod) {
+switch (randomNavigationMethod) {
     case 'walk':
         navigator = new WalkingNavigator(currentCoordinates);
         break;
@@ -71,7 +93,7 @@ switch (navigationMethod) {
         navigator = new BicycleNavigator(currentCoordinates);
         break;
     default:
-        console.log("Invalid navigation method. Please choose 'walk', 'car', or 'bike'.");
+        console.log("Invalid navigation method.");
         break;
 }
 
